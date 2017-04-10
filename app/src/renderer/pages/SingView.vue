@@ -15,8 +15,9 @@
             <el-input name="email" type="email" placeholder="Email" v-model="login.email"></el-input>
 
             <el-input name="password" type="password" placeholder="Correo" v-model="login.password"></el-input>
-
-            <el-button type="primary" @click="onSubmitLogin()" :loading="loading" :disabled="disabledLogin">INICIAR SESIÓN</el-button>
+            <div class="text-center">
+              <el-button type="primary" @click="onSubmitLogin()" :loading="loading" :disabled="disabledLogin">INICIAR SESIÓN</el-button>
+            </div>
           </div>
         </div>
       </div>

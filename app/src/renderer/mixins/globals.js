@@ -5,7 +5,7 @@
 export default {
   data () {
     return {
-      uid: window.localStorage.getItem('personUID')
+      uid: window.localStorage.getItem('uid')
     }
   },
   filters: {
