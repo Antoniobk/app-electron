@@ -1,0 +1,349 @@
+.section-contacts{
+  padding: 0;
+  position: absolute;
+  top: 60px;
+  overflow-y: auto;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #F4F5F7;
+  .width-contact{
+    width: 100%;
+    margin: 0 auto -20px;
+    padding: 0;
+    padding: 0;
+    .content-search{
+      width: 95%;
+      margin: 0 auto 20px;
+    }
+    .nav_contact_list{
+      width: 100%;
+      display: block;
+      margin: 0 auto -20px;
+      > .contact_item{
+        width: 100%;
+        float: none;
+        position: relative;
+        padding: 0;
+        & + .contact_item{
+          border-top: 1px solid rgb(221, 228, 234);
+          // margin-top: 10px;
+        }
+        .b_contact{
+          padding: 0 10px;
+          width: 100%;
+          top: 0;
+          height: 50px;
+          position: relative;
+          background-color: #fff;
+          //box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.02);
+          font-weight: 400;
+          .nav_option_contacts{
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            margin-top: -15px;
+            z-index: 15;
+            > li{
+              float: left;
+              & + li{
+                margin-left: 6px;
+              }
+              .ui-icon-button{
+                height: 30px;
+                width: 30px;
+                display: block;
+                i{
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+          .contact_isDevice{
+            width: 16px;
+            height: 16px;
+            overflow: hidden;
+            position: absolute;
+            left: 1px;
+            top: 3px;
+            z-index: 9;
+            img{
+              max-width: 100%;
+              height: 100%;
+              display: block;
+              margin: 0 auto;
+            }
+          }
+          .head_contact{
+            $hpicture: 36px;
+            position: absolute;
+            display: block;
+            left: 10px;
+            top: 50%;
+            width: $hpicture;
+            padding: 0;
+            margin-top: -18px;
+            .picture_contact{
+              display: block;
+              width: $hpicture;
+              height: $hpicture;
+              border-radius: 36px;
+              margin: 0 auto;
+              overflow: hidden;
+              .imageNotFound{
+                width: $hpicture;
+                height: $hpicture;
+                text-align: center;
+                overflow: hidden;
+                background-color: #D6D2E1;
+                color: #fff;
+                display: table;
+                .b_cell{
+                  display: table-cell;
+                  width: 100%;
+                  vertical-align: middle;
+                }
+                i{
+                  font-size: 28px;
+                  display: block;
+                  margin: 0 auto;
+                }
+              }
+              img{
+                width: 100%;
+                height: 100%;
+              }
+              .contact_picture{
+                width: 100%;
+                height: 100%;
+              }
+              &.picture_link{
+                display: block;
+                &:hover, &:focus{
+                  background-color: transparent;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          .detail_contact{
+            width: 100%;
+            overflow: hidden;
+            margin: 0;
+            padding: 0 120px 0 44px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            .name_contact{
+              height: 16px;
+              font-size: 14px;
+              width: 100%;
+              margin: 0;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding: 0;
+              color: #444;
+            }
+            .p_contact{
+              margin: 0;
+              font-size: 12px;
+              color: #333;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              &.phone{
+                display: none;
+              }
+              i{
+                position: relative;
+                top: 2px;
+                font-size: 12px;
+                text-align: center;
+                color: #666;
+                display: inline-block;
+                *display: inline;
+                margin-right: 5px;
+              }
+              & + .p_contact{
+                margin-top: 3px;
+              }
+            }
+          }
+          &:hover{
+            background-color: rgba(234, 234, 234, 0.61);
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 450px){
+  .section-contacts{
+    padding: 15px;
+    .width-contact{
+      width: 96%;
+      .content-search{
+        width: 400px;
+        margin: 0 auto 25px;
+      }
+      .nav_contact_list{
+        width: 100%;
+        display: block;
+        margin: 0 auto -20px;
+        > .contact_item{
+          width: 100%;
+          float: left;
+          position: relative;
+          padding: 0 10px;
+          margin-bottom: 20px;
+          & + .contact_item{
+            margin-top: 0;
+            border-top: 0;
+          }
+          .b_contact{
+            padding: 0;
+            height: auto;
+            border: 1px solid rgb(221, 228, 234);
+            transition: top .3s, box-shadow .3s;
+            .contact_isDevice{
+              width: 28px;
+              height: 28px;
+              left: 5px;
+              top: 5px;
+            }
+            .nav_option_contacts{
+              top: 5px;
+              right: 5px;
+              margin-top: 0;
+              > li{
+                float: left;
+                & + li{
+                  margin-left: 8px;
+                }
+                .ui-icon-button{
+                  height: 30px;
+                  width: 30px;
+                  i{
+                    font-size: 18px;
+                  }
+                }
+              }
+            }
+            .head_contact{
+              position: relative;
+              width: 100%;
+              padding: 55px 0 25px;
+              margin: 0;
+              top: 0;
+              left: 0;
+              .picture_contact{
+                $hpicture: 120px;
+                width: $hpicture;
+                height: $hpicture;
+                box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px rgba(0,0,0,.14),0 1px 14px rgba(0,0,0,.12);
+                border-radius: $hpicture;
+                .imageNotFound{
+                  width: $hpicture;
+                  height: $hpicture;
+                  i{
+                    font-size: 80px;
+                  }
+                }
+                .contact_picture{
+                  width: 100%;
+                  height: 100%;
+                }
+                &.picture_link{
+                  display: block;
+                  &:hover, &:focus{
+                    background-color: transparent;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+            .detail_contact{
+              text-align: center;
+              min-height: 85px;
+              padding: 10px 0 0;
+              background-color: #F5F8FD;
+              border-top: 1px solid #E6EDF3;
+              top: 0;
+              transform: translateY(0%);
+              .name_contact{
+                height: 20px;
+                width: 100%;
+                font-size: 18px;
+                margin: 0 0 5px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 0 10px;
+                color: #444;
+              }
+              .p_contact{
+                margin: 0;
+                font-size: 12px;
+                color: #333;
+                &.phone{
+                  display: block;
+                }
+                i{
+                  position: relative;
+                  top: 2px;
+                  font-size: 12px;
+                  text-align: center;
+                  color: #666;
+                  display: inline-block;
+                  *display: inline;
+                  margin-right: 5px;
+                }
+                & + .p_contact{
+                  margin-top: 3px;
+                }
+              }
+            }
+            &:hover{
+              background-color: transparent;
+              top: -3px;
+              box-shadow: 0 8px 17px 0 #C5D5E4, 0 6px 20px 0 #C5D5E4;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 730px) {
+  .section-contacts{
+    .width-contact{
+      width: 700px;
+      &.w2{
+        width: 500px;
+      }
+      .nav_contact_list{
+        > .contact_item{
+          width: 50%;
+          padding: 0 10px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1170px){
+  .section-contacts{
+    .width-contact{
+      width: 900px;
+      &.width-small{
+        // width: 400px;
+      }
+      .nav_contact_list{
+        > .contact_item{
+          width: 33.3333%;
+        }
+      }
+    }
+  }
+}

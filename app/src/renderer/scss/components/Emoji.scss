@@ -1,0 +1,162 @@
+.module-emoji {
+  position: absolute;
+  width: 252px;
+  padding: 0;
+  background: #fff;
+  right: 0;
+  bottom: 59px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 1px 10px rgba(0, 0, 0, .35);
+  border: 1px solid #d4d4d4;
+  &:after{
+    content: '';
+    position: absolute;
+    bottom: -7px;
+    display: block;
+    right: 10px;
+    background-color: #F7F7F7;
+    width: 12px;
+    height: 12px;
+    transform: rotate(-45deg);
+    border-left: 1px solid rgba(0, 0, 0, .25);
+    border-bottom: 1px solid rgba(0, 0, 0, .25);
+  }
+  .head-emoji{
+    padding: 5px;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    position: relative;
+  }
+  .body-emoji{
+    padding: 0;
+    background-color: #fff;
+    border: 0;
+    width: 100%;
+    height: 290px;
+    position: relative;
+  }
+  .scrollbar-emoji{
+    width: 100%;
+    min-width: 100%;
+    max-height: 290px;
+    .scroll-div{
+      background: #fff;
+      width: 100%;
+      min-width: 100%;
+      padding: 0 0 0 10px;
+      margin-left: -10px;
+    }
+  }
+  .emoji {
+    display: -moz-inline-box;
+    -moz-box-orient: vertical;
+    display: inline-block;
+    vertical-align: baseline;
+    *vertical-align: auto;
+    *zoom: 1;
+    *display: inline;
+    width: 1em;
+    height: 1em;
+    background-size: 1em;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    background-position: 50%, 50%;
+    background-size: contain;
+  }
+
+  .emoji-sizer {
+    line-height: 18px;
+    font-size: 22px;
+    margin: -2px 0;
+  }
+
+  .emoji-outer {
+    display: -moz-inline-box;
+    display: inline-block;
+    *display: inline;
+    height: 1em;
+    width: 1em;
+  }
+
+  .emoji-inner {
+    display: -moz-inline-box;
+    display: inline-block;
+    text-indent: -9999px;
+    width: 100%;
+    height: 100%;
+    vertical-align: baseline;
+    *vertical-align: auto;
+    *zoom: 1;
+  }
+
+  img.emoji {
+    width: 1em;
+    height: 1em;
+  }
+
+  .emoji-tab-list {
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    li {
+      float: left;
+      color: #999;
+      cursor: pointer;
+      list-style: none;
+      margin-left: 0;
+      padding: 2px;
+      height: 26px;
+      width: 30px;
+      border: 0;
+      &.active {
+        color: #333;
+        background-color: #ddd;
+      }
+      .emoji-outer{
+        width: 22px;
+        height: 22px;
+        display: block;
+        margin: 0 auto;
+      }
+      .emoji-inner{
+        display: block;
+        width: 22px;
+        height: 22px;
+        margin: 0 auto;
+      }
+      &:first-child{
+        margin-left: 0;
+      }
+    }
+  }
+
+  .emoji-data-list {
+    display: block;
+    overflow: hidden;
+    margin: 5px 0;
+    padding: 0;
+    font-size: 12px;
+    li {
+      float: left;
+      cursor: pointer;
+      list-style: none;
+      padding: 2px;
+      height: 26px;
+      width: 30px;
+      .emoji-outer{
+        width: 22px;
+        height: 22px;
+        display: block;
+        margin: 0 auto;
+      }
+      .emoji-inner{
+        display: block;
+        width: 22px;
+        height: 22px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+}

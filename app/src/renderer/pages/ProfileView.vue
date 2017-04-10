@@ -1,0 +1,90 @@
+<template>
+<div class="bgTransition">
+  <template v-if="!responsePerson">
+    <div class="preload-app">
+      <ui-progress-linear></ui-progress-linear>
+    </div>
+  </template>
+  <template v-else>
+    <header-pages title="Account" :show.sync="titleShow" :btn="false" path isdevice></header-pages>
+    <section class="section-person">
+      <div class="width-person bg-white clearfix">
+        <div id="cv"></div>
+        <!-- div class="button-edit">
+          <ui-ibutton color="anda-secundario-text" icon="mode_edit" @click="backToUrl('personedit')"></ui-ibutton>
+        </div -->
+        <div class="clearfix">
+          <div class="user_profile">
+            <div class="img_profile">
+              <img :src="!isDataNull(person.picture_medium) ? person.picture_medium : !isDataNull(person.picture) ? person.picture : '/static/img/placeholder@3x.png'">
+            </div>
+            <div class="description_profile">
+              <h3>{{ person.first_name }} {{ person.last_name }}</h3>
+              <p class="email">{{ person.email }}</p>
+              <p v-if="!isDataNull(person.phone_number)" class="phone">{{ person.phone_number }}</p>
+              <p v-if="!isDataNull(person.born)" class="phone">{{ person.born | borns }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+</div>
+</template>
+<script>
+  import mixinsGlobals from '../mixins/globals'
+  import HeaderPages from '../components/HeaderPages.vue'
+
+  export default {
+    name: 'PersonProfile',
+    mixins: [mixinsGlobals],
+    components: {
+      HeaderPages
+    },
+    route: {
+      activate () {
+        this.titleShow = true
+      },
+      canDeactivate (transition) {
+        this.titleShow = false
+        transition.next()
+      }
+    },
+    data () {
+      return {
+        lc: null,
+        titleShow: false,
+        person: {},
+        responsePerson: false,
+        $person: null
+      }
+    },
+    filters: {
+      borns (date) {
+        return moment(date).format('DD/MM/YYYY')
+      }
+    },
+    created () {
+      this.$person = this.$FireBase.ref(`persons/${this.uid}`)
+    },
+    mounted () {
+      this.fetchPerson()
+    },
+    methods: {
+      fetchPerson () {
+        this.$person.on('value', d => {
+          var obj = d.val()
+          if (!this.isDataNull(obj)) {
+            //  console.log(obj)
+            this.person = obj
+            // Account.init(obj)
+            if (!this.responsePerson) {
+              this.responsePerson = true
+              this.titleShow = true
+            }
+          }
+        })
+      }
+    }
+  }
+</script>

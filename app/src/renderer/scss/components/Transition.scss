@@ -1,0 +1,129 @@
+.sign-transition{
+  width: 100%;
+  position: relative;
+  transition: .4s ease;
+}
+.sign-enter{
+  opacity: 0;
+}
+.sign-leave {
+  opacity: 0;
+  display: none;
+}
+.sign-enter{
+  display: block;
+  -webkit-transform: translateY(200px);
+  transform: translateY(200px);
+}
+.sign-leave{
+  -webkit-transform: translateY(-200px);
+  transform: translateY(-200px);
+}
+
+.button-more-transition{
+  width: 100%;
+  position: relative;
+  transition: .4s ease .2s;
+}
+.button-more-enter,
+.button-more-leave {
+  opacity: 0;
+}
+.button-more-enter,
+.button-more-leave{
+  -webkit-transform: translateX(55px);
+  transform: translateX(55px);
+}
+
+.chat-participans-transition{
+  width: 100%;
+  position: relative;
+  transition: .4s ease;
+}
+.chat-participans-enter,
+.chat-participans-leave {
+  opacity: 0;
+}
+.chat-participans-enter,
+.chat-participans-leave{
+  -webkit-transform: translateY(15px);
+  transform: translateY(15px);
+}
+
+.chat-sticker-transition{
+  transition: .4s ease;
+}
+.chat-sticker-enter,
+.chat-sticker-leave {
+  opacity: 0;
+}
+.chat-sticker-enter{
+  -webkit-transform: translateY(15px);
+  transform: translateY(15px);
+}
+.chat-sticker-leave{
+  -webkit-transform: translateY(-15px);
+  transform: translateY(-15px);
+}
+
+
+.geo-devices-transition{
+  transition: .2s ease;
+}
+.geo-devices-enter,
+.geo-devices-leave {
+  opacity: 0;
+}
+.geo-devices-enter,
+.geo-devices-leave{
+  -webkit-transform: translateX(10px);
+  transform: translateX(10px);
+}
+/*.geo-devices-leave{
+  -webkit-transform: translateX(-15px);
+  transform: translateX(-15px);
+}*/
+
+
+@-webkit-keyframes vicp_progress {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 40px;
+  } 
+}
+@keyframes vicp_progress {
+  0% {
+    background-position-y: 0;
+  }
+  100% {
+    background-position-y: 40px;
+  }
+}
+
+@-webkit-keyframes vicp {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0) translatey(-60px);
+    transform: scale(0) translatey(-60px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translatey(0);
+    transform: scale(1) translatey(0);
+  }
+}
+
+@keyframes vicp {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0) translatey(-60px);
+    transform: scale(0) translatey(-60px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translatey(0);
+    transform: scale(1) translatey(0);
+  }
+}

@@ -1,0 +1,137 @@
+.cropper-modal {
+  .modal {
+    width: 840px;
+    height: 524px;
+    background-color: #fff;
+  }
+  .modal-head {
+    position: relative;
+    text-align: center;
+    padding: 0 16px 0 40px;
+  }
+  .head-wrap {
+    position: relative;
+    font-size: 14px;
+    color: #222;
+    height: 50px;
+    line-height: 50px;
+    /*border-bottom: 1px solid #e5e9ef;*/
+  }
+  .modal-content {
+    /*padding: 30px 40px 40px;*/
+    //padding: 15px;
+  }
+  .ui-button{
+    height: 30px;
+    margin-bottom: 15px;
+    padding: 6px 10px;
+    color: #fff;
+  }
+  .img-clip-wrap {
+    /*width: 500px;*/
+    position: relative;
+    width: 100%;
+    height: 306px;
+    border: 3px dashed #b9b9b9;
+  }
+  .container-bg {
+    /*width: 480px;*/
+    width: 100%;
+    height: 300px;
+    background-color: #ececec;
+    /*border-radius: 4px;*/
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .img-container {
+    position: relative;
+    height: 0;
+    margin: auto;
+  }
+  .img-container img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .img-container .shadow-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1;
+  }
+  .reset-img {
+    position: relative;
+    display: inline-block;
+    margin-top: 16px;
+    color: #6d757a;
+    font-size: 12px;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .reset-img input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    cursor: pointer
+  }
+  .reset-img:hover {
+    color: #00b5e5;
+  }
+  .img-preview-wrap {
+    display: none; /*eliminar*/
+    width: 240px;
+    float: right;
+  }
+  .pre-container {
+    width: 240px;
+    height: 150px;
+    background-color: #000;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .pre-container img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+  }
+  .pre-info {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #99a2aa;
+  }
+  .clearfix:before,.clearfix:after {
+    content: ' ';
+    display: table;
+  }
+  .clearfix:after {
+    clear: both;
+  }
+  .modal-footer {
+    text-align: center;
+  }
+  .modal-btn {
+    display: inline-block;
+    width: 110px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 32px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn-confirm {
+    border: 1px solid #00a1d6;
+    color: #fff;
+    background-color: #00a1d6;
+  }
+  .btn-confirm:hover {
+    background-color: #00b5e5;
+  }
+}

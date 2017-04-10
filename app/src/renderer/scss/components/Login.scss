@@ -1,0 +1,294 @@
+.bg-log{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:url(../assets/img/home1.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.login-table{
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  width: 100%;
+  display: table;
+  .login-cell{
+    vertical-align: middle;
+    display: table-cell;
+  }
+}
+.row_sign{
+  margin: 0 -7px;
+}
+.option_register{
+  width: 100%;
+  margin: 10px 0 0;
+  > li{
+    width: 50%;
+    float: left;
+    padding: 0 7px;
+    button{
+      width: 100%;
+      color: #fff;
+      border: 2px solid #fff;
+      display: block;
+      height: 40px;
+      line-height: 36px;
+      font-size: 14px;
+      border-radius: 4px;
+      transition: all .25s ease-in-out;
+      span{
+        display: block;
+        width: 100%; 
+      }
+      .ui-progress-circular{
+        margin: 0 auto;
+        display: block;
+      }
+      &:focus{
+        outline: 0;
+        box-shadow: none;
+      }
+      &.btn-google{
+        background-color: #fff;//#3b5998;
+        color: #E04831;
+        padding: 0;
+        font-weight: 700;
+        img{
+          width: auto;
+          height: 26px;
+          margin-right: 9px;
+        }
+        &.btn-disabled{
+          border-color: #E04831;
+          background-color: #E04831;
+          color: #fff;
+          opacity: 0.9;
+        }
+        &.btn-disabled-ext{
+          border-color: #E04831;
+          background-color: #fff;
+          color: #E04831;
+          opacity: 0.9;
+        }
+        &:hover{
+          border-color: #E04831;
+        }
+      }
+      &.btn-facebook{
+        background-color: #fff;//#3b5998;
+        color: #3465A3;
+        padding: 0;
+        font-weight: 700;
+        img{
+          width: 24px;
+          height: 26px;
+          margin-right: 9px;
+        }
+        &.btn-disabled{
+          border-color: #3465A3;
+          background-color: #3465A3;
+          color: #fff;
+          opacity: 0.9;
+        }
+        &.btn-disabled-ext{
+          border-color: #3465A3;
+          background-color: #fff;
+          color: #3465A3;
+          opacity: 0.9;
+        }
+        &:hover{
+          border-color: #3465A3;
+        }
+      }
+    }
+    & + li{
+      //margin-top: 10px;
+    }
+  }
+}
+.login-container{
+  position: relative;
+  z-index: 10;
+  width: 280px;
+  margin: 0 auto;
+  padding: 0;
+  .nav_log{
+    width: 100%;
+    margin: 20px 0 0;
+    > li{
+      width: 50%;
+      float: left;
+      &:nth-child(1){
+        button{
+          float: left;
+        }
+      }
+      &:nth-child(2){
+        button{
+          float: right;
+        }
+      }
+      button{
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        font-weight: 300;
+        padding: 0;
+        display: block;
+        color: rgba(255,255,255,.75);
+        border-radius: 0;
+        cursor: pointer;
+        &:hover, &:focus{
+          color: rgba(255,255,255,1);
+          outline: 0;
+          text-decoration: none;
+        }
+        /*&.btn-login{
+          background-color: #59599F;
+        }
+        &.btn-register{
+          background-color: #A15598;
+        }*/
+      }
+    }
+  }
+  &.not-found{
+    text-align: center;
+    color: #fff;
+    h2{
+      font-weight: 900;
+      margin: 15px 0 0;
+      font-size: 28px;
+    }
+    p{
+      margin: 0;
+    }
+  }
+  .login-header{
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    img{
+      width: 50px;
+      height: 50px;
+      margin: 0 auto;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    h1{
+      margin: 15px 0 0;
+      font-weight: 200;
+    }
+    .content_social{
+      margin: 15px -5px 0;
+      .nav_social_button{
+        >li{
+          padding: 0 5px;
+          width: 50%;
+          float: left;
+          a{
+            background-color: rgba(255,255,255,.6);
+            padding: 0;
+            height: 30px;
+            border-radius: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 100%;
+            display: block;
+            color: #272634;
+            &:hover, &:focus, &.v-link-active{
+              text-decoration: none;
+              background-color: rgba(255,255,255,.85);
+            }
+          }
+        }
+      }
+    }
+  }
+  .login-body{
+    padding: 0 15px;
+    min-height: 140px;
+    color: rgba(230, 230, 230, 0.9);
+    // width: 100%;
+    margin-top: 10px;
+    overflow: hidden;
+    transition: all .4s ease;
+    .text_sign{
+      margin: 5px 0 0;
+      text-align: center;
+      color: #ABA8AE;
+      font-size: 13px;
+      .btn-register{
+        color: #fff;
+        background-color: transparent;
+        border: 0;
+        font-size: 13px;
+        padding: 0;
+        margin: 0;
+        display: inline-block;
+        &:hover, &:focus{
+          outline: 0;
+          text-decoration: none;
+        }
+      }
+    }
+    .el-input{
+      & + .el-input{
+        margin-top: 15px;
+      }
+    }
+    .el-button{
+      margin-top: 15px;
+    }
+    .btn-submit{
+      background-color: transparent;
+      border: 1px solid #fff;
+      width: 100%;
+      padding: 0;
+      height: 50px;
+      will-change: box-shadow,transform;
+      display: -webkit-inline-flex;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      display: block;
+      color: #fff;
+      font-weight: 300;
+      margin-top: 25px;
+      border-radius: 0;
+      cursor: pointer;
+      &:hover, &:focus{
+        outline: 0;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+
+/*.login-container .login-body .form-control::-moz-placeholder {
+  color: rgba(230, 230, 230, 0.9);
+  opacity: 1;
+}
+.login-container .login-body .form-control:-ms-input-placeholder {
+  color: rgba(230, 230, 230, 0.9);
+}
+.login-container .login-body .form-control::-webkit-input-placeholder {
+  color: rgba(230, 230, 230, 0.9);
+}
+*/

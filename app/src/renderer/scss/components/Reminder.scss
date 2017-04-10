@@ -1,0 +1,74 @@
+@import './components/Mixin.scss';
+/*
+ * Section Devices
+ */
+.section-reminder{
+  padding: 40px 0 15px;
+  .width-reminder{
+    width: 96%;
+    margin: 0 auto;
+    padding: 15px;
+    //background-color: #fff;
+    //box-shadow: 0 6px 10px #ABABAB;
+    &.width-small{
+      width: 555px;
+    }
+    .row-profile{
+      margin: 0 -8px;
+      .col-xs-5, .col-xs-7{
+        padding: 0 8px;
+      }
+      .upload-border{
+        width: 160px;
+        height: 160px;
+        margin: 0 auto;
+      }
+    }
+    &.w2{
+      padding: 20px 15px;
+      .form-horizontal{
+        h4{
+          margin: 0 0 25px;
+          font-size: 22px;
+        }
+        .form-group{
+          margin: 0;
+        }
+      }
+    }
+    .form-horizontal{
+      .form-group{
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+  @include listItems;
+}
+/*@media (min-width: 550px){
+  .section-devices{
+    .width-devices{
+      &.width-small{
+        width: 500px;
+      }
+    }
+  }
+}*/
+@media (min-width: 730px) {
+  .section-devices{
+    .width-devices{
+      width: 700px;
+      &.w2{
+        width: 500px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1170px){
+  .section-devices{
+    .width-devices{
+      width: 900px;
+    }
+  }
+}

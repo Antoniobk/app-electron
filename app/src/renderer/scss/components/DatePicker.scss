@@ -1,0 +1,249 @@
+$width: 294px;
+.datepicker{
+  position: relative;
+}
+.mu-date-display{
+  width: 100%;
+  font-weight: 700;
+  display: block;
+  background-color: #5c6bc0;
+  border-radius: 0;
+  color: #fff;
+  padding: 10px;
+  .mu-date-display-year {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    height: 16px;
+    opacity: .7;
+    -webkit-transition: all .45s cubic-bezier(.23,1,.32,1);
+    transition: all .45s cubic-bezier(.23,1,.32,1);
+    margin-bottom: 10px;
+    &.active{
+      opacity: 1;
+    }
+    .mu-date-display-slideIn-wrapper {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      .mu-date-display-year-title {
+        cursor: pointer;
+      }
+    }
+  }
+  .mu-date-display-monthday {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    font-size: 36px;
+    line-height: 36px;
+    height: 38px;
+    -webkit-transition: all .45s cubic-bezier(.23,1,.32,1);
+    transition: all .45s cubic-bezier(.23,1,.32,1);
+    width: 100%;
+    font-weight: 700;
+    opacity: .7;
+    &.active{
+      opacity: 1;
+    }
+    .mu-date-display-slideIn-wrapper {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      .mu-date-display-monthday-title {
+        cursor: default;
+        width: 100%;
+        display: block;
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.calendar-content{
+  position: absolute;
+  z-index: 1505;
+  background: white;
+  width: $width + 18px;
+  margin-top: 160px;
+  overflow: hidden;
+  margin-left: -148px;
+  left: 50%;
+  box-shadow: 0 19px 60px rgba(0,0,0,.298039), 0 15px 20px rgba(0,0,0,.219608);
+  //0 1px 6px rgba(0,0,0,.117647), 0 1px 4px rgba(0,0,0,.117647);
+  .btn-aceptar{
+    display: block;
+    position: relative;
+    padding: 5px;
+    margin: 15px 0 0;
+    .ui-button{
+      height: 36px;
+      line-height: 36px;
+      width: 26px;
+      padding: 0 6px;
+      font-size: 12px;
+    }
+  }
+}
+.calendar{
+  position: relative;
+  z-index: 100;
+  background: white;
+  width: $width + 18px;
+  padding: 0 8px;
+  .calendar-day{
+
+  }
+  header{
+    position: relative;
+    display: block;
+    line-height: 48px;
+    height: 48px;
+    &.header-days,
+    &.header-year{
+      .color-btn-left{
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-top: -15px;
+      }
+      .color-btn-right{
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -15px;
+      }
+      .ui-icon-button{
+        height: 30px;
+        width: 30px;
+        .ui-icon-button-icon{
+          font-size: 22px;
+          color: #000;
+        }
+      }
+    }
+    span{
+      display: inline-block;
+      text-align: center;
+      width: 71.42857142857143%;
+      float: left;
+      &.up{
+        display: block;
+        width: 100%;
+        height: 48px;
+      }
+      .prev:not(.disabled),
+      .next:not(.disabled),
+      .up:not(.disabled){
+        cursor: pointer;
+        &:hover{
+          background: #eee;
+        }
+      }
+    }
+  }
+  .cell{
+    display: block;
+    padding: 0 5px;
+    width: 42px;
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 2px;
+    &:not(.blank):not(.disabled).day{
+      cursor: pointer;
+      margin-bottom: 2px;
+      &:after{
+        content: '';
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        top: 0;
+        z-index: 3;
+        left: 4px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #6e57a0;
+        opacity: 0.6;
+        transform: scale(0);
+        transition: all .45s cubic-bezier(.23,1,.32,1);
+      }
+      .circle{
+        position: relative;
+        z-index: 5;
+      }
+    }
+    &.disabled{
+      color: rgba(0,0,0,0.4);
+    }
+    &:not(.blank):not(.disabled).day{
+      &:hover, &.selected{
+        color: #fff;
+        &:after{
+          transform: scale(1);
+        }
+      }
+      &.selected{
+        &:after{
+          opacity: 1;
+        }
+      }
+    }
+    &:not(.blank):not(.disabled).month{
+      cursor: pointer;
+      &:hover, &.selected{
+        color: #fff;
+        &:after{
+          width: 34px;
+          height: 36px;
+          margin-top: -18px;
+          margin-left: -18px;
+        }
+      }
+    }
+
+    &:not(.blank):not(.disabled).year{
+      transition: all .45s cubic-bezier(.23,1,.32,1);
+      &:hover, &.selected{
+        cursor: pointer;
+        color: #6e57a0;
+        font-weight: 900;
+        // transform: scale(1.05);
+      }
+    }
+    &:not(.blank).year:last-child{
+      width: 33.333333%;
+      margin-left: 33.333333%;
+    }
+    &.grey{
+      color: #888;
+      &:hover{
+        background: inherit;
+      }
+    }
+    &.day-header{
+      font-size: 75%;
+      opacity: .6;
+      //white-space: no-wrap;
+      cursor: inherit;
+      &:hover{
+        background: inherit;
+      }
+    }
+  }
+  .month,
+  .year{
+    width: 33.333333%
+  }
+}

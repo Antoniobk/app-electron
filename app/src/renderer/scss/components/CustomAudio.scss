@@ -1,0 +1,187 @@
+#w {
+  display: block;
+  width: 750px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 45px;
+}
+
+#content {
+  display: block;
+  width: 100%;
+  background: #fff;
+  padding: 25px 20px;
+  padding-bottom: 35px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.rd-audio-player-container {
+  width: 170px;//220px;
+  height: 26px;
+  // margin-top: 5px;
+  overflow: hidden;
+  position: relative;
+  transition: width .25s ease;
+  &._loading{
+    width: 26px;
+    margin: 0 auto;
+    border: 0;
+    .ui-progress-circular {
+      .ui-progress-circular-indeterminate-path{
+        stroke: #5C6BBD !important;
+      }
+    }
+    &:hover, &:focus{
+      outline: none;
+    }
+  }
+}
+.rd-audio-cover {
+  width: 26px;
+  height: 26px;
+  color: #fff;
+  // background-color: #5c6fbc0;
+  border-radius: 50%;
+  text-align: center;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  position: absolute;
+  will-change: box-shadow,transform;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  border: 0;
+  .material-icons{
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  &:hover, &:focus{
+    color: #fff;
+    cursor: pointer;
+  }
+  /*&:after{
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    border: 2px solid #fff;
+    background-color: transparent;
+    content: "";
+    left: 5px;
+    top: 5px;
+    border-radius: 50%;
+  }
+  &:before{
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 50%;
+    margin-top: -12px;
+    right: -8px;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 12px solid #5c6bc0;
+  }*/
+  .rotate_cached{
+    -webkit-animation: spin 1.2s infinite linear;
+    -moz-animation: spin 1.2s infinite linear;
+    -ms-animation-name: spin 1.2s infinite linear;
+    -o-animation: spin 1.2s infinite linear;
+    animation: spin 1.2s infinite linear;
+  }
+  &.audio-left{
+    float: right;
+    .material-icons{
+      color: rgba(0, 0, 0, 0.9);
+    }
+    // background-color: #6E57a0;
+    /*&:before{
+      right: 0;
+      left: -8px;
+      border-left: 0;
+      border-right: 12px solid #6E57a0;
+    }*/
+  }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+.rd-audio-contrl-wrapper {
+  width: 100%;
+  padding-left: 65px;
+  height: 26px;
+  z-index: 15;
+  background-color: transparent;
+  position: relative;
+  will-change: box-shadow,transform;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  .rd-audio-slider {
+    width: 100%;
+    height: .40rem;
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .rd-audio-slider-rail {
+    position: absolute;
+    width: 0;
+    left: 0;
+    height: 100%;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: all .15s;
+  }
+  .rd-audio-slider-time {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.9);
+    height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    left: 30px;
+    top: 0;
+  }
+  &.audio-right-contrl{
+    .rd-audio-slider-time{
+      color: #fff;
+    }
+    .rd-audio-slider{
+      background-color: rgba(255, 255, 255, 0.45);
+    }
+    .rd-audio-slider-rail{
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+  }
+}

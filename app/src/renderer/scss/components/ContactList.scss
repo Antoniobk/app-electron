@@ -1,0 +1,305 @@
+.section-contactlist{
+  /*position: relative;
+  width: 100%;*/
+  padding: 40px 0;
+  position: absolute;
+  top: 60px;
+  overflow-y: auto;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: #F4F5F7;
+  .width-contact{
+    width: 96%;
+    //background-color: #fff;
+    margin: 0 auto -20px;
+    padding: 0;
+    padding: 15px;
+    //  box-shadow: 0 6px 10px #ABABAB;
+    &.width-small{
+      width: 555px;
+    }
+    &.width-assign{
+      width: 400px;
+    }
+    .b_search{
+      width: 400px;
+      margin: 0 auto;
+    }
+    .nav_contact_list{
+      width: 100%;
+      display: block;
+      margin: 0 auto -20px;
+      > li{
+        width: 100%;
+        float: left;
+        position: relative;
+        padding: 0 10px;
+        margin-bottom: 20px;
+        .b_contact{
+          padding: 0;
+          width: 100%;
+          top: 0;
+          height: auto;
+          position: relative;
+          background-color: #fff;
+          //box-shadow: 1px 1px 3px 0 rgba(0,0,0,.04),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.02);
+          font-weight: 400;
+          border: 1px solid rgb(221, 228, 234);
+          transition: top .3s, box-shadow .3s;
+          .head_contact{
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 55px 0 25px;
+            .nav_option{
+              top: 5px;
+              right: 5px;
+              bottom: auto;
+              &.nav_person{
+                right: auto;
+                left: 5px;
+                > li{
+                  &.person{
+                    .ui-icon-button{
+                      i{
+                        font-size: 24px;
+                      }
+                    }
+                  }
+                  &.child{
+                    .ui-icon-button{
+                      i{
+                        color: #2196f3;
+                      }
+                    }
+                  }
+                }
+              }
+              > li{
+                .ui-icon-button{
+                  height: 30px;
+                  width: 30px;
+                  background-color: #fff;
+                  box-shadow: 0 1px 1px 0 rgba(0,0,0,.2),0 1px 2px 0 rgba(0,0,0,.16);
+                  -webkit-mask-image: none;
+                  mask-image: none;
+                  transition: box-shadow .2s;
+                  i{
+                    font-size: 18px;
+                    color: #9F9F9F;
+                  }
+                  &:hover{
+                    box-shadow: 0 2px 5px 0 rgba(0,0,0,.2),0 2px 10px 0 rgba(0,0,0,.16);
+                  }
+                }
+              }
+            }
+            .picture_contact{
+              $hpicture: 120px;
+              display: block;
+              width: $hpicture;
+              height: $hpicture;
+              box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px rgba(0,0,0,.14),0 1px 14px rgba(0,0,0,.12);
+              border-radius: 50%;
+              margin: 0 auto;
+              overflow: hidden;
+              .imageNotFound{
+                width: $hpicture;
+                height: $hpicture;
+                text-align: center;
+                overflow: hidden;
+                background-color: #D6D2E1;
+                color: #fff;
+                display: table;
+                .b_cell{
+                  display: table-cell;
+                  width: 100%;
+                  vertical-align: middle;
+                }
+                i{
+                  font-size: 80px;
+                  display: block;
+                  margin: 0 auto;
+                }
+              }
+              img{
+                width: 100%;
+                height: 100%;
+              }
+              .contact_picture{
+                width: 100%;
+                height: 100%;
+              }
+              &.picture_link{
+                display: block;
+                &:hover, &:focus{
+                  background-color: transparent;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+          .detail_contact{
+            width: 100%;
+            overflow: hidden;
+            margin-top: 0;
+            text-align: center;
+            min-height: 85px;
+            padding: 10px 0 0;
+            position: relative;
+            background-color: #F5F8FD;
+            border-top: 1px solid #E6EDF3;
+            .name_contact{
+              height: 20px;
+              width: 100%;
+              margin: 0 0 5px;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding: 0 10px;
+              color: #444;
+            }
+            .p_contact{
+              margin: 0;
+              font-size: 12px;
+              color: #333;
+              i{
+                position: relative;
+                top: 2px;
+                font-size: 12px;
+                text-align: center;
+                color: #666;
+                display: inline-block;
+                *display: inline;
+                margin-right: 5px;
+              }
+              & + .p_contact{
+                margin-top: 3px;
+              }
+            }
+          }
+          &:hover{
+            top: -3px;
+            box-shadow: 0 8px 17px 0 #C5D5E4, 0 6px 20px 0 #C5D5E4;
+          }
+        }
+      }
+    }
+    .b_edit-contact{
+      .add_contact_alert{
+        position: relative;
+        margin: 0 0 10px;
+        display: block;
+        width: 100%;
+        background-color: transparent;
+        .ui-button{
+          display: block;
+          position: relative;
+          width: 100%;
+          padding: 0 6px;
+          text-align: center;
+          font-size: 12px;
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+      .list-itemsContent{
+        margin: 0;
+        position: relative;
+        height: auto;
+        width: 100%;
+        .nav_listItems{
+          width: 100%;
+          position: relative;
+          > li{
+            float: none;
+            width: 100%;
+            height: 46px;
+            padding: 5px 0;
+            margin: 0;
+            .itemContent{
+              width: 100%;
+              padding: 5px 0;
+              height: 46px;
+              display: block;
+              position: relative;
+              color: #333;
+              font-size: 12px;
+              .picture_circle_user{
+                position: absolute;
+                left: 0;
+                top: 50%;
+                margin-top: -18px;
+                width: 36px;
+                height: 36px;
+              }
+              .nameItem{   
+                display: block;
+                position: relative;
+                top: 50%;
+                padding: 0 50px;
+                transform: translateY(-50%);
+                font-weight: 500;
+                font-size: 11px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              @include iconCheck;
+            }
+          }
+        }
+      }
+      .form-group{
+        margin: 0 0 15px 0;
+      }
+      .form_contact-assign{
+        margin-top: 15px;
+        transition: opacity .3s ease;
+      }
+    }
+  }
+}
+@media (min-width: 550px){
+  .section-contactlist{
+    .width-contact{
+      &.width-small{
+        // width: 450px;
+      }
+    }
+  }
+}
+@media (min-width: 730px) {
+  .section-contactlist{
+    padding: 40px 0;
+    .width-contact{
+      width: 700px;
+      &.w2{
+        width: 500px;
+      }
+      .nav_contact_list{
+        > li{
+          width: 50%;
+          padding: 0 10px;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1170px){
+  .section-contactlist{
+    .width-contact{
+      width: 900px;
+      &.width-small{
+        // width: 400px;
+      }
+      .nav_contact_list{
+        > li{
+          width: 33.3333%;
+        }
+      }
+    }
+  }
+}
