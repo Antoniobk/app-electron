@@ -27,6 +27,16 @@ export default {
     },
     year (date) {
       return moment(date).format('DD/MM/YYYY')
+    },
+    ddmmyy (date) {
+      let _date = new Date(date)
+      var mm = _date.getMonth() + 1
+      var dd = _date.getDate()
+      return [
+        (dd > 9 ? '' : '0') + dd,
+        (mm > 9 ? '' : '0') + mm,
+        _date.getFullYear()
+      ].join('/')
     }
   },
   methods: {

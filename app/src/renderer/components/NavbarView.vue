@@ -6,9 +6,15 @@
     <div class="nav_list-user">
       <ul class="nav nav-option_style">
         <li>
-          <router-link to="/profile">
+          <router-link :to="{name: 'profile'}">
             <span class="icon_a"><i class="material-icons">account_box</i></span>
             <span class="name_a">Profile</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'contacts'}">
+            <span class="icon_a"><i class="material-icons">people</i></span>
+            <span class="name_a">Contacts</span>
           </router-link>
         </li>
       </ul>

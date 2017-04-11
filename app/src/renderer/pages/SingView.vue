@@ -33,8 +33,8 @@
         loading: false,
         disabledLogin: false,
         login: {
-          email: '',
-          password: '',
+          email: 'front@anda.pe',
+          password: 'administrador',
           remember: false
         },
         errorIn: {
@@ -55,7 +55,7 @@
             _persons.once('value').then(data => {
               let obj = data.val()
               console.log(obj)
-              this.$router.push({ path: 'app' })
+              this.$router.push({ name: 'profile' })
               this.loading = false
               // Account.init(obj)
             })

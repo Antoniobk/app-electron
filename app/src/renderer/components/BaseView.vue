@@ -81,7 +81,7 @@
         this.$FireAuth.signOut().then(data => {
           // console.log('logout token', this.token)
           // this.$FireBase.ref(`person-tokens/${this.uid}/${this.token}`).set(null)
-          // this.$router.go('/')
+          this.$router.push({ name: 'sing-view' })
           console.log('success', data)
         }, error => {
           console.log('error', error)

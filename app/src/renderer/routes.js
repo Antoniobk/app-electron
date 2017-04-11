@@ -10,8 +10,14 @@ export default [
     component: require('components/BaseView'),
     children: [
       {
-        path: 'profile',
+        path: '/profile',
+        name: 'profile',
         component: require('pages/ProfileView')
+      },
+      {
+        path: '/contacts',
+        name: 'contacts',
+        component: require('pages/ContactsView')
       }
     ]
   },

@@ -21,7 +21,7 @@ function createWindow () {
   mainWindow.on('closed', () => {
     mainWindow = null
   })
-
+  mainWindow.setMenu(null)
   // eslint-disable-next-line no-console
   console.log('mainWindow opened')
 }
