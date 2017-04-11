@@ -3,15 +3,14 @@ import Electron from 'vue-electron'
 import Router from 'vue-router'
 import firebase from 'firebase'
 // import firebase from 'firebase'
-import ElementUI from 'element-ui'
-import locale from 'element-ui/lib/locale/lang/en'
-import './theme/index.css'
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
 // import './scss/app.scss'
 import App from './App'
 import routes from './routes'
 
 Vue.use(Electron)
-Vue.use(ElementUI, {locale})
+Vue.use(MuseUI)
 Vue.use(Router)
 
 Vue.config.debug = true

@@ -13,12 +13,13 @@ export default [
         path: '/profile',
         name: 'profile',
         component: require('pages/ProfileView')
-      },
-      {
-        path: '/contacts',
-        name: 'contacts',
-        component: require('pages/ContactsView')
       }
+      // ,
+      // {
+      //   path: '/contacts',
+      //   name: 'contacts',
+      //   component: require('pages/ContactsView')
+      // }
     ]
   },
   {

@@ -8,15 +8,12 @@
             <img src="../assets/img/anda_logo_white.png">
             <h1>Forgot your password?</h1>
           </div>
-          <div class="login-body">  
-            <template>
-              <el-alert v-if="errorIn.status" :description="errorIn.message" title="success alert" :type="errorIn.type"  :closable="false"> </el-alert>
-            </template>
-            <el-input name="email" type="email" placeholder="Email" v-model="login.email"></el-input>
+          <div class="login-body">
+            <mu-text-field name="email" type="email" hintText="Email" v-model="login.email"/>
+            <mu-text-field name="password" type="password" hintText="Correo" v-model="login.password"/>
 
-            <el-input name="password" type="password" placeholder="Correo" v-model="login.password"></el-input>
             <div class="text-center">
-              <el-button type="primary" @click="onSubmitLogin()" :loading="loading" :disabled="disabledLogin">INICIAR SESIÓN</el-button>
+              <mu-raised-button @click="onSubmitLogin()" primary label="INICIAR SESIÓN" :disabled="disabledLogin" fullWidth/>
             </div>
           </div>
         </div>

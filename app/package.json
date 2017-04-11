@@ -4,8 +4,8 @@
   "description": "An electron-vue project",
   "main": "./dist/main.js",
   "dependencies": {
-    "element-ui": "^1.2.7",
     "firebase": "^3.7.5",
+    "muse-ui": "^2.0.2",
     "vue": "^2.2.6",
     "vue-electron": "^1.0.6",
     "vue-router": "^2.4.0"
