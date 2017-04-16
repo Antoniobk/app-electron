@@ -4,8 +4,8 @@
     <h2 v-if="show" transition="slideLeft">{{ title }}</h2>
   </div>
   <template v-if="btn">
-    <div class="btn-icon-more" :class="{'btn-icon-mini': isResponsive }" v-if="show"  transition="slideRight">
-      <ui-ibutton type="flat" color="anda-secundario" icon="add" @click="onClickEvent()"></ui-ibutton>
+    <div class="btn-icon-more" v-if="show"  transition="slideRight">
+      <mu-float-button icon="add" mini class="demo-float-button" @click="onClickEvent()"/>
     </div>
   </template>
 </div>
@@ -36,7 +36,7 @@
   padding: 0 15px;
   color: #000;
   border: 0;
-  background-color: rgb(247, 247, 247);
+  background-color: #fff;
   border-bottom: 1px solid rgba(0,0,0,.2);
   //box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   // background-color: #fff;

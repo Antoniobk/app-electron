@@ -4,12 +4,11 @@
 .section-person{
   padding: 15px;
   position: absolute;
-  top: 120px;
+  top: 60px;
   overflow-y: auto;
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: #F4F5F7;
   &.section_person_delete,
   &.section_person_password{
     padding: 5px 0;
@@ -18,6 +17,7 @@
     position: relative;
     width: 100%;
     margin: 0 auto;
+    border-radius: 4px;
     &.bg-white{
       background-color: #fff;
       padding: 0;

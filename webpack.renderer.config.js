@@ -99,8 +99,8 @@ let rendererConfig = {
   resolve: {
     alias: {
       'styles': path.resolve(__dirname, 'app/src/renderer/scss'), // relative to the location of the webpack config file!
-      'pages': path.join(__dirname, 'app/src/renderer/pages'),
       'components': path.join(__dirname, 'app/src/renderer/components'),
+      'pages': path.join(__dirname, 'app/src/renderer/pages'),
       'renderer': path.join(__dirname, 'app/src/renderer')
     },
     extensions: ['.js', '.vue', '.json', '.css', '.node', '.scss'],

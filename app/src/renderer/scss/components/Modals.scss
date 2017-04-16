@@ -71,11 +71,6 @@
       background-color: #5c6bc0;
     }
   }
-  &.modal-alert-edit{
-    .modal-body{
-      @include listItems;
-    }
-  }
   &.modal-user-chat{
     position: absolute;
     .modal-container{
@@ -126,13 +121,6 @@
   &.modal-edit-group{
     position: absolute;
     .modal-body{
-      .row{
-        margin: 0 -8px;
-      }
-      .col-xs-5 .col-xs-7{
-        padding: 0 8px;
-      }
-      @include listItems;
       .list-itemsContent{
         height: 248px;
         .nav_listItems{
@@ -522,7 +510,6 @@
       border: 0;
       .content_profile{
         text-align: center;
-        padding: 15px 10px;
         .contact_picture{
           $hpicture: 120px;
           border-radius: 50%;
@@ -539,49 +526,34 @@
             border-radius: 50%;
             overflow: hidden;
           }
-          .imageNotFound{
-            width: $hpicture;
-            height: $hpicture;
-            text-align: center;
-            overflow: hidden;
-            background-color: #D6D2E1;
-            color: #fff;
-            display: table;
-            .b_cell{
-              display: table-cell;
-              width: 100%;
-              vertical-align: middle;
-            }
-            i{
-              font-size: 80px;
-              display: block;
-              margin: 0 auto;
-            }
-          }
         }
         h3{
-          font-size: 18px;
-          margin: 15px 0 8px;
+          font-size: 16px;
+          margin: 13px 0 5px;
         }
         p{
           margin: 0;
           font-size: 12px;
           & + p{
-            margin-top: 4px;
+            margin-top: 3px;
           }
         }
-        .btn-save{
-          height: 32px;
-          width: 32px;
-          border-radius: 50%;
-          position: absolute;
-          right: -12px;
-          top: -12px;
-          line-height: 24px;
-          min-width: 0;
-          padding: 0;
-          i{
-            font-size: 18px;
+        .btn-color{
+          background-color: #5a4494;
+          color: #fff;
+        }
+      }
+    }
+  }
+  &.modal-delete{
+    .modal-footer{
+      .nav_menu_form{
+        display: inline-block;
+        *display: inline;
+        > li{
+          float: left;
+          & + li{
+            margin-left: 10px;
           }
         }
       }
@@ -807,7 +779,7 @@
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
-@media (min-width: 550px){
+@media (min-width: 550px) {
   .modal-mask{
     .modal-container{
       width: 500px;
@@ -839,11 +811,9 @@
         width: 380px;
       }
     }
-    &.modal-code-device{
-    }
   }
 }
-@media (min-width: 768px){
+@media (min-width: 768px) {
   .modal-mask{
     &.modal-edit-group{
       .modal-dialog{
@@ -852,12 +822,10 @@
     }
     &.modal-creategeofence{
       padding: 120px 0 0 60px;
-      /*left: 0;
-      top: 60px;*/
     }
   }
 }
-@media (min-width: 992px){
+@media (min-width: 992px) {
   .modal-mask{
     padding-left: 180px;
     &.modal-user-chat{
@@ -865,8 +833,6 @@
     }
     &.modal-creategeofence{
       padding: 120px 0 0 180px;
-      /*left: 0;
-      top: 60px;*/
     }
   }
 }

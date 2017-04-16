@@ -4,11 +4,12 @@
   "description": "An electron-vue project",
   "main": "./dist/main.js",
   "dependencies": {
-    "firebase": "^3.7.5",
+    "firebase": "^3.7.6",
     "muse-ui": "^2.0.2",
     "vue": "^2.2.6",
     "vue-electron": "^1.0.6",
-    "vue-router": "^2.4.0"
+    "vue-router": "^2.4.0",
+    "vue-text-filters": "0.0.5"
   },
   "devDependencies": {},
   "author": "antoniovv92 <antonioadolvv@gmail.com>"

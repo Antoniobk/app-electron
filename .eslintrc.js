@@ -24,7 +24,7 @@ module.exports = {
     'google': true,
     'URL': true,
     'Audio': true,
-    'FireBase': true
+    '_': true
   },
   'rules': {
     // allow paren-less arrow functions

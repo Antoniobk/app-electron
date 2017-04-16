@@ -5,7 +5,8 @@
         <div class="modal-body">
           <div class="content_profile">
             <div class="contact_picture">
-              <img :src="!isDataNull(person.picture_medium) ? person.picture_medium : !isDataNull(person.picture) ? person.picture : '../assets/img/placeholder@3x.png'">
+              <img v-if="!isDataNull(person.picture)" :src="person.picture">
+              <img v-else src="../assets/img/person.png">
             </div>
             <h3>{{ person.first_name + ' ' + person.last_name}}</h3>
             <template v-if="type == 'device'">
@@ -19,10 +20,11 @@
                 <b>Phone:</b><br>{{ person.phone_number }}
               </p>
               <p v-if="person.born">
-                <b>Birthday:</b><br>{{ person.born | year }}
+                <b>Birthday:</b><br>{{ person.born | ddmmyy }}
               </p>
             </template>
-            <button type="button" class="btn-save btn-cancel-modal" @click="show=!show"><i class="material-icons">clear</i></button>
+            <br>
+            <mu-raised-button @click="onClose" label="Cancel" class="btn-color" fullWidth/>
           </div>
         </div>
       </div>
@@ -36,7 +38,12 @@
   export default {
     name: 'modal-profile',
     mixins: [mixinsGlobals],
-    props: ['show', 'person', 'type']
+    props: ['show', 'person', 'type'],
+    methods: {
+      onClose () {
+        this.$emit('close', 'close')
+      }
+    }
   }
 </script>
 

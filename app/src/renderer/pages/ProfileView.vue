@@ -1,7 +1,7 @@
 <template>
 <div class="bgTransition">
   <header-pages title="Account" :show.sync="titleShow" :btn="false" path isdevice></header-pages>
-  <section class="section-person" v-loading="!responsePerson" element-loading-text="Loading...">
+  <section class="section-person">
     <div class="width-person bg-white clearfix">
       <!-- div class="button-edit">
         <ui-ibutton color="anda-secundario-text" icon="mode_edit" @click="backToUrl('personedit')"></ui-ibutton>
@@ -9,7 +9,8 @@
       <div class="clearfix">
         <div class="user_profile">
           <div class="img_profile">
-            <img :src="!isDataNull(person.picture_medium) ? person.picture_medium : !isDataNull(person.picture) ? person.picture : '../assets/img/placeholder@3x.png'">
+            <img v-if="!isDataNull(person.picture)" :src="person.picture">
+            <img v-else src="../assets/img/person.png">
           </div>
           <div class="description_profile">
             <h3>{{ person.first_name }} {{ person.last_name }}</h3>
@@ -50,11 +51,11 @@
     },
     methods: {
       fetchPerson () {
-        this.$person.on('child_added', d => {
+        this.$person.on('value', d => {
           var obj = d.val()
           if (!this.isDataNull(obj)) {
             //  console.log(obj)
-            this.person[d.key] = d.val()
+            this.person = d.val()
             // Account.init(obj)
             if (!this.responsePerson) {
               this.responsePerson = true

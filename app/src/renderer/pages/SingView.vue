@@ -1,17 +1,15 @@
 <template>
   <div>
-    <div class="bg-log"></div>
+    <!-- div class="bg-log"></div -->
     <div class="login-table">
       <div class="login-cell">
         <div class="login-container">
           <div class="login-header">
-            <img src="../assets/img/anda_logo_white.png">
-            <h1>Forgot your password?</h1>
+            <img src="../assets/img/logoanda.png">
           </div>
           <div class="login-body">
             <mu-text-field name="email" type="email" hintText="Email" v-model="login.email"/>
             <mu-text-field name="password" type="password" hintText="Correo" v-model="login.password"/>
-
             <div class="text-center">
               <mu-raised-button @click="onSubmitLogin()" primary label="INICIAR SESIÓN" :disabled="disabledLogin" fullWidth/>
             </div>
@@ -67,7 +65,6 @@
     }
   }
 </script>
-
 <style lang="scss" scoped>
   @import '../scss/components/Login.scss'
 </style>

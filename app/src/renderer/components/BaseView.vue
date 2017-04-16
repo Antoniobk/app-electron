@@ -3,25 +3,23 @@
     <section class="content-layout">
       <navbar-view></navbar-view>
       <section class="content-main">
-        <header class="header-user">
-          <div class="clearfix">
-            <div class="b-right" v-if="loadingPerson" transition="slideRight">
-              <ul class="nav nav_opt"> 
-                <li>
-                  <div class="picture-user">
-                    <div class="img_profile">
-                      <img :src="!isDataNull(person.picture_small) ? person.picture_small : !isDataNull(person.picture) ? person.picture : '/static/img/placeholder@3x.png'">
-                    </div>
-                    <span class="name-user">
-                      {{person.first_name}} <template v-if="!isDataNull(person.last_name)">{{person.last_name}}</template>
-                    </span>
+        <header class="header-user clearfix">
+          <div class="b-right" v-if="loadingPerson" transition="slideRight">
+            <ul class="nav nav_opt"> 
+              <li>
+                <div class="picture-user">
+                  <div class="img_profile">
+                    <img :src="!isDataNull(person.picture_small) ? person.picture_small : !isDataNull(person.picture) ? person.picture : '../assets/img/person.png'">
                   </div>
-                </li>
-                <li>
-                  <button type="button" class="btn-logout" role="button" @click="signOut()"><i class="material-icons">power_settings_new</i></button>
-                </li>
-              </ul> 
-            </div>
+                  <span class="name-user">
+                    {{person.first_name}} <template v-if="!isDataNull(person.last_name)">{{person.last_name}}</template>
+                  </span>
+                </div>
+              </li>
+              <li>
+                <button type="button" class="btn-logout" role="button" @click="signOut()"><i class="material-icons">power_settings_new</i></button>
+              </li>
+            </ul> 
           </div>
         </header>
         <router-view></router-view>
@@ -62,15 +60,12 @@
     },
     updated () {
     },
-    beforeDestroy () {
-      this.$person.off()
-    },
     methods: {
       fetchPerson () {
         this.$person.on('child_added', d => {
           var obj = d.val()
           if (!this.isDataNull(obj)) {
-            console.log(obj)
+            // console.log(obj)
             this.person[d.key] = d.val()
             this.loadingPerson = true
           }
@@ -90,7 +85,7 @@
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  @import '../scss/components/LayoutBase.scss'
+<style lang="scss">
+  @import '../scss/components/LayoutBase.scss';
+  @import '../scss/components/Modals.scss';
 </style>

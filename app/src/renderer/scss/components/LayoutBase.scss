@@ -44,14 +44,14 @@ body{
   }
   .content-aside{
     // width: 180px;
-    width: 60px;
+    width: 180px;
     height: 100%;
     max-height: 100%;
     position: absolute;
     top: 0;
     left: 0;
     box-sizing: border-box;
-    background-color: #5B4494;//#5a4495;
+    background-color: #43455A;//#5a4495;
     // transform: translateX(-180px);
     transform: translate3d(0,0,0);
     transform-style: preserve-3d;
@@ -62,9 +62,7 @@ body{
     z-index: 115;
     transition: all .45s cubic-bezier(.23,1,.32,1);
     &.activeResize{
-      left: -60px;
-      /*-webkit-transform: translateX(0);
-      transform: translateX(0);*/
+      transform: translate3d(-100%, 0, 0);
     }
   }
   .content-main{
@@ -84,52 +82,13 @@ body{
     // margin-left: 0;
     margin-top: 0;
     width: 100%;
-    padding-left: 60px;
+    padding-left: 180px;
     //margin-left: 60px;
     // background-color: #ECF1F5;
     transition: all .45s cubic-bezier(.23,1,.32,1);
     &.activeResize{
       width: 100%;
       padding-left: 0;
-    }
-  }
-}
-@media (min-width: 768px) {
-  .content-layout{
-    .content-aside{
-      width: 60px;
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-    }
-    .content-main{
-      // width: calc(100% - 60px);
-      // margin-left: 60px;
-      padding-left: 60px;
-      &.activeResize{
-
-      }
-    }
-  }
-}
-@media (min-width: 992px) {
-  .content-layout{
-    .content-aside{
-      width: 180px;
-      -webkit-transform: translateX(0);
-      transform: translateX(0);
-      &.activeResize{
-        transform: translate3d(-100%, 0, 0)
-        // left: -180px;
-      }
-    }
-    .content-main{
-      // width: calc(100% - 180px);
-      // margin-left: 180px;
-      padding-left: 180px;
-      &.activeResize{
-        padding-left: 0
-        // transform: translate3d(0, 0, 0)
-      }
     }
   }
 }
@@ -141,7 +100,7 @@ body{
   width: 100%;
   z-index: 120;
   position: relative;
-  background: #fff;
+  background: #37394E;
   border: 0;
   border-bottom: 1px solid rgba(0,0,0,.2);
   .b-left{
@@ -157,17 +116,18 @@ body{
       height: 60px;
       float: left;
       & + li{
-        border-left: 1px solid rgba(0, 0, 0, 0.2);
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
       }
       .btn-logout{
-        color: #858598;
+        color: rgba(255,255,255,.7);
         background-color: transparent;
         width: 60px;
         display: block;
-        line-height: 59px;
+        line-height: 60px;
         text-align: center;
         border: 0;
-        height: 59px;
+        height: 60px;
+        transition: all .2s ease;
         i{
           margin: 0 auto;
           display: block;
@@ -175,8 +135,8 @@ body{
         &:hover,&:focus{
           outline: 0;
           border: 0;
-          background-color: #f1f1f1;
-          color: #5B4494;
+          background-color: #474958;
+          color: #fff;
         }
       }
     }
@@ -188,7 +148,7 @@ body{
     float: right;
     padding: 0;
     overflow: hidden;
-    color: #858598;
+    color: rgba(255,255,255,.7);
     margin: 14px 0 0 0;
     padding: 0 15px;
     .img_profile{
@@ -211,7 +171,6 @@ body{
     }
     .name-user{
       display: inline-block;
-      font-weight: 700;
       margin-left: 6px;
       position: relative;
       vertical-align: middle;
@@ -225,16 +184,99 @@ body{
     &:hover{
       cursor: pointer;
       outline: 0;
-      color: #5c6bc0;
+      color: #fff;
       .img_profile{
-        color: #5c6bc0;
+        color: #fff;
       }
     }
   }
 }
-.ui-fab{
-  .ui-icon{
-    display: block;
-    margin: 0 auto;
+.bgTransition{  
+  -webkit-animation-duration: .4s;
+          animation-duration: .4s;
+  position: absolute;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  top: 60px;
+  left: 180px;
+  right: 0;
+  bottom: 0;
+  background-color: #E2E5EE;
+  transition: all .45s cubic-bezier(.23,1,.32,1);
+}
+$anda: (
+  'primario': #6e57a0,
+  'primario-claro': #cfc2e0,
+  'primario-oscuro': #5a4494,
+  'secundario': #5c6bc0,
+  'secundario-claro': #c5cae9,
+  'secundario-oscuro': #3f51b5,
+  'dark-principal': #212121,
+  'dark-secundario': #bcbcc0,
+  'dark-hint': #5e5e5e 
+);
+$shades: (
+  "black": #000000,
+  "white": #FFFFFF,
+  "transparent":  transparent
+);
+$red: (
+  "accent-2": #FF5252
+);
+$grey: (
+  "darken-2": #616161
+);
+$blue: (
+  "base": #2196F3
+);
+$green: (
+  "base": #4CAF50
+);
+$colors: (
+  "anda": $anda,
+  "shades": $shades,
+  "blue": $blue,
+  "red": $red,
+  "grey": $grey,
+  "green": $green
+);
+
+// Color Classes
+@each $color_name, $color in $colors {
+  @each $color_type, $color_value in $color {
+    .color-#{$color_name}-#{$color_type} {
+      background-color: $color_value !important;
+    }
+    .color-#{$color_name}-#{$color_type}-text {
+      color: $color_value !important;
+    }
+    .text-color-active-#{$color_name}-#{$color_type}{
+      color: $color_value !important;
+    }
+    .text-color-#{$color_name}-#{$color_type}{
+      color: $color_value !important;
+    }
   }
+}
+
+// Shade classes
+@each $color, $color_value in $shades {
+  .#{$color} {
+    background-color: $color_value !important;
+  }
+  .#{$color}-text {
+    color: $color_value !important;
+  }
+}
+
+
+@function color($color, $type) {
+  @if map-has-key($colors, $color) {
+    $curr_color: map-get($colors, $color);
+    @if map-has-key($curr_color, $type) {
+      @return map-get($curr_color, $type);
+    }
+  }
+  @warn "Unknown `#{name}` in $colors.";
+  @return null;
 }

@@ -4,6 +4,7 @@
       <a href=""><img src="../assets/img/anda_logo_white.png"></a>
     </header>
     <div class="nav_list-user">
+      <h4>Navigation</h4>
       <ul class="nav nav-option_style">
         <li>
           <router-link :to="{name: 'profile'}">
@@ -17,6 +18,18 @@
             <span class="name_a">Contacts</span>
           </router-link>
         </li>
+        <li>
+          <router-link :to="{name: 'invitations'}">
+            <span class="icon_a"><i class="material-icons">person_add</i></span>
+            <span class="name_a">Invitations</span>
+          </router-link>
+        </li>
+        <li>
+          <router-link :to="{name: 'safezones'}">
+            <span class="icon_a"><i class="material-icons">person_pin_circle</i></span>
+            <span class="name_a">Safe Zones</span>
+          </router-link>
+        </li>
       </ul>
     </div>
   </aside>
@@ -24,22 +37,22 @@
 <style lang="scss" scoped>
 .header-logo{
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   height: 60px;
-  background-color: #6E56A0;//#6e57a1;
-  border-bottom: 1px solid #d0c3e1;
+  background-color: #37394E;
+  border: 0;
   a{
     display: block;
     position: relative;
     width: 100%;
-    height: 50px;
+    height: 40px;
     border-radius: 4px;
     overflow: hidden;
     img{
-      width: 50px;
+      width: 40px;
       margin: 0 auto;
       display: block;
-      height: 50px;
+      height: 40px;
     }
   }
 }
@@ -47,9 +60,12 @@
   width: 100%;
   padding: 0;
   h4{
-    margin: 0 0 10px 10px;
+    margin: 30px 0 15px;
+    padding: 0 15px;
     color: #fff;
-    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
   }
   .nav-option_style{
     width: 100%;
@@ -58,61 +74,62 @@
       float: none;
       width: 100%;
       transition: all .3s;
-      min-height: 50px;
       touch-action: manipulation;
       & + li{
-        // margin-top: 1px;
+        margin-top: 2px;
       }
-      a{
+      > a{
+        position: relative;
         width: 100%;
-        padding: 7px 10px;
+        padding: 5px 10px 5px 25px;
         margin: 0;
-        color: #d0c3e1;//#dcdce8;
+        color: rgba(255, 255, 255, .5);
         text-decoration: none;
         font-weight: 300;
         font-size: 14px;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -ms-flex-align: center;
-        align-items: center;
         .icon_a{
           display: block;
           text-align: center;
-          height: 40px;
-          width: 40px;
+          height: 20px;
+          width: 20px;
           float: left;
-          border-radius: 2px;
-          color: #d0c3e1;//#7c7b98;
-          background-color: rgba(0,0,0,.31);
           i{
-            font-size: 24px;
-            height: 40px;
+            font-size: 20px;
             width: 100%;
-            display: block; 
-            line-height: 40px;
+            display: block;
             cursor: inherit;
             margin: 0 auto;
           }
         }
         .name_a{
-          display: none;
+          display: inline-block;
           margin-left: 15px;
+          font-size: 12px;
+          text-transform: uppercase;
         }
-        &:hover, &:focus, &.v-link-active{
-          background-color: rgba(255, 255, 255, 0.14);
+        &:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          background-color: #cfc2e0;
+          height: 100%;
+          transition: all .2s ease;
+        }
+        &:hover, &:focus, &.router-link-active{
           outline: 0;
-          color: #fff;
-          .icon_a{
-            color: #fff;//#a7a6c1;
+          color: rgba(255,255,255,.9);
+          background-color: transparent;
+          &:before{
+            width: 5px;
           }
         }
       }
     }
   }
 }
-@media (min-width: 768px) {
+/*@media (min-width: 768px) {
   .nav_list-user{
     .nav-option_style{
       >li{
@@ -153,5 +170,5 @@
       }
     }
   }
-}
+}*/
 </style>

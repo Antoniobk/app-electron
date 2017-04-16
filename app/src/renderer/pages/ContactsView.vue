@@ -1,21 +1,25 @@
 <template>
   <div class="bgTransition">
-    <header-pages title="Contacts" :show.sync="titleShow" :btn="true" path="personsearch" :isdevice="false"></header-pages>
-
-    <section class="section-contacts" v-loading="!responseContact" element-loading-text="Loading...">
-      <div class="width-contact clearfix">
-        <div class="content-search">
-          <el-input placeholder="Pick a date" icon="search" v-model="contactSearch" :on-icon-click="handleIconClick"></el-input>
-        </div>
-        <div class="nav_contact_list">
-          <div class="contact_item" v-for="contact in contacts">
-            <contact-item :contact="contact"></contact-item>
+    <header-pages title="Contacts" :show="titleShow" :btn="true" path="personsearch" :isdevice="false"></header-pages>
+    <template v-if="!responseContact">
+      <mu-linear-progress />
+    </template>
+    <template v-else>
+      <section class="section-contacts">
+        <div class="width-contact clearfix">
+          <div class="content-search">
+            <mu-text-field hintText="Buscar contacto" type="text" icon="search" v-model="contactSearch"/><br/>
+          </div>
+          <div class="nav_contact_list">
+            <div class="contact_item" v-for="contact in contacts">
+              <contact-item :contact="contact" @selected="selectContact"></contact-item>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </template>
 
-    <div class="modal-mask" v-if="flagDelete" transition="modal">
+    <div class="modal-mask modal-delete" v-if="flagDelete" transition="modal">
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
@@ -24,35 +28,35 @@
           <div class="modal-body">
             <p style="text-align:center;margin:0;">¿Estas seguro que deseas eliminar a {{deleteItem.name}}?</p>
           </div>
-          <div class="modal-footer">
-            <div class="text-center">
-              <ul class="nav nav_menu_form">
-                <li>
-                  <ui-button @click="flagDelete = !flagDelete" :text="(language == 'es')? lang.es.cancel : lang.us.cancel" color="anda-secundario" :disabled="disabledRemove"></ui-button>
-                </li>
-                <li>
-                  <ui-button @click="modalDeleteContact()" :text="(language == 'es')? lang.es.button_ok : lang.us.button_ok" color="anda-primario" :loading="loadingRemove"></ui-button>
-                </li>
-              </ul>
-            </div>
+          <div class="modal-footer text-center">
+            <ul class="nav nav_menu_form">
+              <li>
+                <mu-raised-button @click="flagDelete = !flagDelete" label="Cancel" :disabled="disabledRemove"/>
+              </li>
+              <li>
+                <mu-raised-button @click="modalDeleteContact()" label="Aceptar" primary/>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <modal-profile v-if="flagProfile" :show.sync="flagProfile" :person="profileContact" type="contact"></modal-profile>
+    <modal-profile v-if="flagProfile" :show="flagProfile" :person="profileContact" type="contact" @close="closeModal"></modal-profile>
   </div>
 </template>
 <script>
-  import mixinsGlobals from '../mixins/globals'
+  // mixins
+  import mixinGlobals from '../mixins/globals'
+  import mixinTask from '../mixins/task'
   // components
-  import ContactItem from '../components/contacts/ContactItem.vue'
   import HeaderPages from '../components/HeaderPages.vue'
   import ModalProfile from '../components/ModalProfile.vue'
+  import ContactItem from '../components/contacts/ContactItem.vue'
   // import mixinTask from '../mixins/task'
   export default {
-    name: 'ContactList',
-    mixins: [mixinsGlobals],
+    name: 'contact-view',
+    mixins: [mixinGlobals, mixinTask],
     components: {
       HeaderPages,
       ContactItem,
@@ -68,7 +72,7 @@
           status: false,
           messages: []
         },
-        qt: FireBase.ref('queue/tasks'),
+        qt: this.$FireBase.ref('queue/tasks'),
         userSearch: '',
         profileContact: {},
         flagProfile: false,
@@ -87,22 +91,22 @@
       this.$contacts = this.$FireBase.ref(`person-contacts/${this.uid}`)
     },
     mounted () {
-      this.fetchContactList()
+      this.titleShow = true
+      this.fetchContacts()
     },
     destroyed () {
       if (this.$contacts !== null) this.$contacts.off()
       this.qt.off()
     },
-    events: {
-      eventShowPerfil (c) {
-        this.viewProfile(c)
-      },
-      eventShowModal (c) {
-        this.opentDeleteModal(c)
-      }
-    },
     methods: {
-      fetchContactList () {
+      selectContact (type, contact) {
+        if (type === 'delete') this.opentDeleteModal(contact)
+        else this.viewProfile(contact)
+      },
+      closeModal () {
+        this.loadingRemove = this.disabledRemove = this.flagDelete = this.flagProfile = false
+      },
+      fetchContacts () {
         this.$contacts.once('value', d => {
           if (!d.exists()) this.responseContact = true
         })
@@ -112,22 +116,19 @@
           if (d.val()) {
             var _c = d.val()
             for (var key in _c) this.contacts.push(_c[key])
-            if (!this.responseContact) {
-              this.responseContact = true
-              this.titleShow = true
-            }
+            if (!this.responseContact) this.responseContact = true
           }
         })
       },
 
-      viewProfile (_contact) {
+      viewProfile (contact) {
         this.flagProfile = true
-        this.profileContact = _contact
+        this.profileContact = contact
       },
 
-      opentDeleteModal (_contact) {
-        this.deleteItem.id = _contact.person_uid
-        this.deleteItem.name = _contact.first_name + (this.isDataNull(_contact.last_name) ? '' : ` ${_contact.last_name}`)
+      opentDeleteModal (contact) {
+        this.deleteItem.id = contact.person_uid
+        this.deleteItem.name = contact.first_name + (this.isDataNull(contact.last_name) ? '' : ` ${contact.last_name}`)
         this.flagDelete = true
       },
 
@@ -155,4 +156,39 @@
     }
   }
 </script>
-
+<style lang="scss" scoped>
+  .section-contacts{
+    padding: 15px;
+    position: absolute;
+    top: 60px;
+    overflow-y: auto;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: #F4F5F7;
+    .width-contact{
+      width: 96%;
+      margin: 0 auto;
+      padding: 0;
+      .content-search{
+        width: 95%;
+        margin: 0 auto 20px;
+      }
+      .nav_contact_list{
+        width: 100%;
+        display: block;
+        margin: 0 auto;
+        > .contact_item{
+          float: left;
+          position: relative;
+          width: 33.33333%;
+          padding: 0 10px;
+          margin-bottom: 20px;
+          & + .contact_item{
+            // margin-top: 10px;
+          }
+        }
+      }
+    }
+  }
+</style>

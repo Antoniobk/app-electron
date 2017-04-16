@@ -1,53 +1,80 @@
 <template>
   <div class="b_contact clearfix">
     <div class="contact_isDevice" v-if="!isDataNull(contact.device_uid)">
-      <img src="/static/img/device2@2x.png" alt="">
+      <img src="/assets/img/device2@2x.png" alt="">
     </div>
-    <ul class="nav nav_option_contacts">
+    <mu-icon-menu icon="more_vert" @change="handleChange" :anchorOrigin="rightTop" :targetOrigin="rightTop">
+      <mu-menu-item value="profile" title="Perfil" />
+      <template v-if="!isDataNull(contact.has_conversation)">
+        <template v-if="!isDataNull(contact.owner_uid)">
+          <template v-if="!isDataNull(contact.device_uid)">
+            <mu-menu-item value="chat" title="Chat" />
+          </template>
+        </template>
+        <template v-else>
+          <mu-menu-item value="chat" title="Chat" />
+        </template>
+      </template>
+      <mu-menu-item v-if="isDataNull(contact.device_uid)" value="delete" title="Eliminar" />
+    </mu-icon-menu>
+    <!-- ul class="nav nav_option_contacts">
       <li>
-        <ui-ibutton color="anda-secundario-text" icon="info" @click="onClickPerfil(contact)"></ui-ibutton>
+        <mu-icon-button icon="info" @click="onClickPerfil(contact)"/>
       </li>
       <li v-if="!isDataNull(contact.has_conversation)">
-        <ui-ibutton color="anda-secundario-text" icon="question_answer" @click="backToUrl('chatitem',contact.has_conversation)"></ui-ibutton>      
+        <mu-icon-button icon="question_answer" @click="backToUrl('chatitem',contact.has_conversation)"/>
       </li>
       <li v-if="isDataNull(contact.device_uid)">
-        <ui-ibutton color="anda-secundario-text" icon="delete" @click="onClickDelete(contact)"></ui-ibutton>
+        <mu-icon-button icon="delete" @click="onClickDelete(contact)"/>
       </li>
-    </ul>
+    </ul -->
     <div class="head_contact group">
       <div class="picture_contact">
-        <img :src="!isDataNull(contact.picture_medium) ? contact.picture_medium : !isDataNull(contact.picture) ? contact.picture : '/static/img/placeholder@3x.png'">
+        <img v-if="!isDataNull(contact.picture)" :src="contact.picture">
+        <img v-else src="/assets/img/person.png">
       </div>
     </div>
     <div class="detail_contact">
       <h4 class="name_contact">{{ contact.first_name +' '+ contact.last_name }}</h4>
-      <p class="p_contact" v-if="contact.email">{{ contact.email }}</p>
-      <p class="p_contact phone" v-if="contact.phone_number">{{ contact.phone_number }}</p>
+      <p class="p_contact" v-if="!isDataNull(contact.email)">{{ contact.email }}</p>
+      <p class="p_contact phone" v-if="!isDataNull(contact.phone_number)">{{ contact.phone_number }}</p>
     </div>
   </div>
 </template>
 <script>
-  import mixinsGlobals from '../mixins/globals'
+  import mixinsGlobals from '../../mixins/globals'
   export default {
     name: 'contact-item',
     props: ['contact'],
     mixins: [mixinsGlobals],
     data () {
       return {
+        rightTop: {
+          horizontal: 'right',
+          vertical: 'top'
+        },
+        srcImg: ''
       }
     },
+    created () {
+      // let f1 = this.isDataNull(this.contact.picture_medium)
+      // let f2 = this.isDataNull(this.contact.picture)
+      if (!this.isDataNull(this.contact.picture_medium)) this.srcImg = this.contact.picture_medium
+      else if (!this.isDataNull(this.contact.picture)) this.srcImg = this.contact.picture
+      else this.srcImg = '../../assets/img/person@2x.png'
+      // this.$nextTick(() => {
+      //   this.srcImg = !this.isDataNull(this.contact.picture_medium) ? this.contact.picture_medium : !this.isDataNull(this// .contact.picture) ? this.contact.picture : '../../assets/img/person@2x.png'
+      // })
+    },
     methods: {
-      onClickPerfil (c) {
-        this.$dispatch('eventShowPerfil', c)
-      },
-      onClickDelete (i, c) {
-        this.$dispatch('eventShowModal', i, c)
+      handleChange (val = '') {
+        this.$emit('selected', val, this.contact)
       }
     }
   }
 </script>
 <style lang="scss" scoped>
-  .b_contact{
+  /*.b_contact{
     padding: 0 10px;
     width: 100%;
     top: 0;
@@ -191,18 +218,34 @@
     &:hover{
       background-color: rgba(234, 234, 234, 0.61);
     }
-  }
-  @media (min-width: 450){
+  }*/
+  // @media (min-width: 450){
     .b_contact{
-      padding: 0;
       height: auto;
       border: 1px solid rgb(221, 228, 234);
+      padding: 0;
+      width: 100%;
+      top: 0;
+      position: relative;
+      background-color: #fff;
       transition: top .3s, box-shadow .3s;
       .contact_isDevice{
+        position: absolute;
         width: 28px;
         height: 28px;
         left: 5px;
         top: 5px;
+        img{
+          width: 100%;
+          height: 100%;
+          display: block;
+        }
+      }
+      .mu-icon-menu{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        z-index: 9;
       }
       .nav_option_contacts{
         top: 5px;
@@ -225,7 +268,7 @@
       .head_contact{
         position: relative;
         width: 100%;
-        padding: 55px 0 25px;
+        padding: 30px 0 25px;
         margin: 0;
         top: 0;
         left: 0;
@@ -235,12 +278,12 @@
           height: $hpicture;
           box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px rgba(0,0,0,.14),0 1px 14px rgba(0,0,0,.12);
           border-radius: $hpicture;
-          .imageNotFound{
-            width: $hpicture;
-            height: $hpicture;
-            i{
-              font-size: 80px;
-            }
+          margin: 0 auto;
+          overflow: hidden;
+          img{
+            display: block;
+            width: 100%;
+            height: 100%;
           }
           .contact_picture{
             width: 100%;
@@ -267,7 +310,7 @@
           height: 20px;
           width: 100%;
           font-size: 18px;
-          margin: 0 0 5px;
+          margin: 0;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -278,18 +321,10 @@
           margin: 0;
           font-size: 12px;
           color: #333;
+          margin-top: 5px;
           &.phone{
             display: block;
-          }
-          i{
-            position: relative;
-            top: 2px;
-            font-size: 12px;
-            text-align: center;
-            color: #666;
-            display: inline-block;
-            *display: inline;
-            margin-right: 5px;
+            margin-top: 0;
           }
           & + .p_contact{
             margin-top: 3px;
@@ -297,10 +332,9 @@
         }
       }
       &:hover{
-        background-color: transparent;
-        top: -3px;
+        background-color: #fff;
         box-shadow: 0 8px 17px 0 #C5D5E4, 0 6px 20px 0 #C5D5E4;
       }
     }
-  }
+  // }
 </style>
